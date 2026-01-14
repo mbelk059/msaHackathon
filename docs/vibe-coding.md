@@ -138,7 +138,7 @@ Ask about SAM features:
 
 ### 3. Iterate Quickly
 
-With CLI deployment (`uv run sam run configs/`), changes are picked up immediately—no rebuild needed.
+With CLI deployment (`uv run sam run configs/`), there's no Docker rebuild step—just restart the process to pick up changes.
 
 ## Troubleshooting
 
