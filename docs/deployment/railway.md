@@ -53,7 +53,7 @@ LLM_SERVICE_GENERAL_MODEL_NAME=openai/zai-glm-4.7
 SOLACE_DEV_MODE=true
 ```
 
-> **Tip:** Go to **Variables** → **Raw Editor**, paste the above, replace `sk-CHANGE-ME` with your API key, and save.
+> **Tip:** Go to **Variables** → **Raw Editor**, paste the above, replace `your-api-key` with your API key, and save.
 
 ## 5. Expose the Web UI
 

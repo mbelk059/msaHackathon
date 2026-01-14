@@ -17,7 +17,7 @@ This is a **hackathon quickstart template** for building SAM applications. The i
 
 | Task                 | Command/Location                                                                |
 | -------------------- | ------------------------------------------------------------------------------- |
-| Run locally (Docker) | `docker build -t sam . && docker run --rm -it -p 8000:8000 --env-file .env sam` |
+| Run locally (Docker) | `docker build -t sam-quickstart . && docker run --rm -it -p 8000:8000 --env-file .env sam-quickstart` |
 | Run locally (CLI)    | `uv sync && uv run sam run configs/`                                            |
 | Web UI               | http://localhost:8000                                                           |
 | Create new agent     | Add YAML file in `configs/agents/`                                              |
