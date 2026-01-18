@@ -103,8 +103,6 @@ apps:
         type: ${PERSISTENCE_TYPE, memory}
         database_url: ${CUSTOM_AGENT_DATABASE_URL,}
 
-      artifact_service: *default_artifact_service
-
       agent_card:
         description: "Web research agent - searches and scrapes current information"
         defaultInputModes: ["text"]
