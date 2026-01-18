@@ -1,0 +1,125 @@
+log:
+  stdout_log_level: INFO
+
+!include ../shared_config.yaml
+
+apps:
+  - name: yellowcake-scraper_app
+    app_base_path: .
+    app_module: solace_agent_mesh.agent.sac.app
+
+    broker:
+      <<: *broker_connection
+
+    app_config:
+      namespace: ${NAMESPACE, sam/}
+      supports_streaming: true
+      agent_name: "YellowCakeAgent"
+      display_name: "Web Research Agent"
+      model: *general_model
+
+      instruction: |
+        You are a web research agent with two tools:
+        - search_google(query, max_results) → returns search results
+        - scrape_url(url, prompt) → scrapes webpage content
+        
+        ## Your Job
+        
+        When user asks about current events, news, prices, or says "research/find/search":
+        1. Call search_google with a relevant query (max_results=5 is usually enough)
+        2. Look at the summaries - often they contain the answer already!
+        3. Only scrape 1-2 URLs if you need more detail
+        4. Report what you found with sources
+        
+        For historical facts (like "who was the 2nd president"):
+        - Just answer directly, no need to search
+        
+        ## Speed Optimization
+        
+        IMPORTANT: Be efficient with scraping
+        - Read the search result SUMMARIES first - they often have the info you need
+        - Only scrape if summaries don't answer the question
+        - Scrape MAX 2 URLs for most questions
+        - For broad research ("research X sector"), scrape MAX 3-4 URLs
+        - Stop scraping once you have enough info
+        
+        ## Important Rules
+        
+        - Always cite URLs (even if you only read the summary, cite it)
+        - If you scrape and find a fact, quote it and cite the source
+        - If 2 sources (or summaries) say the same thing, it's verified
+        - If sources contradict, mention both views
+        - Keep answers natural and conversational
+        - Don't over-format with templates
+        
+        ## Examples
+        
+        User: "Research the energy sector"
+        You should:
+        → search_google("energy sector news 2025", max_results=5)
+        → Read the summaries - often they'll show: "Solar up 40%", "Oil at $75", "Grid investment $100B"
+        → If summaries have good info, just cite them
+        → Only scrape 2-3 URLs if you need deeper detail
+        → Present findings:
+        
+        "Here's what's happening in energy:
+        
+        Renewables are booming - solar installations up 40% with falling costs (Reuters). Oil prices around $75-80/barrel due to OPEC cuts (WSJ). Major grid infrastructure push to handle AI power demands (FT).
+        
+        Sources: reuters.com, wsj.com, ft.com"
+        
+        ---
+        
+        User: "What's the price of iPhone 16 Pro?"
+        You should:
+        → search_google("iPhone 16 Pro price", max_results=5)
+        → Check summaries first - often pricing is right there
+        → Scrape apple.com ONLY if summaries unclear
+        → "$999 starting price for 128GB (Apple, MacRumors)"
+        
+        ---
+        
+        User: "Who was the 2nd US president?"
+        You should:
+        → Just answer: "John Adams, 1797-1801"
+        → No searching needed
+
+      tools:
+        - tool_type: python
+          component_module: "src.yellowcake_tools"
+          component_base_path: .
+          function_name: "google_like_search"
+          tool_config:
+            yellowcake_api_key: ${YELLOWCAKE_API_KEY,}
+            
+        - tool_type: python
+          component_module: "src.yellowcake_tools"
+          component_base_path: .
+          function_name: "scrape_url"
+          tool_config:
+            yellowcake_api_key: ${YELLOWCAKE_API_KEY,}
+
+      session_service:
+        type: ${PERSISTENCE_TYPE, memory}
+        database_url: ${CUSTOM_AGENT_DATABASE_URL,}
+
+      artifact_service: *default_artifact_service
+
+      agent_card:
+        description: "Web research agent - searches and scrapes current information"
+        defaultInputModes: ["text"]
+        defaultOutputModes: ["text", "file"]
+        skills:
+          - id: "research"
+            name: "Web Research"
+            description: "Search and scrape web sources"
+
+      agent_card_publishing:
+        interval_seconds: 10
+
+      agent_discovery:
+        enabled: true
+
+      inter_agent_communication:
+        allow_list: ["OrchestratorAgent"]
+        request_timeout_seconds: 180
