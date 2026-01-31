@@ -12,6 +12,11 @@ export default {
         medium: '#EAB308',
         low: '#22C55E',
       },
+      fontFamily: {
+        sans: ['Droid Sans', 'sans-serif'],
+        serif: ['Tangerine', 'serif'],
+        mono: ['Inconsolata', 'monospace'],
+      },
     },
   },
   plugins: [],

@@ -31,7 +31,7 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
 
   if (loading) {
     return (
-      <div className="w-96 bg-black/40 backdrop-blur-md border-l border-white/10 p-6">
+      <div className="w-96 bg-slate-900 border-l border-white/10 p-6">
         <div className="animate-pulse space-y-4">
           <div className="h-8 bg-white/10 rounded"></div>
           <div className="h-32 bg-white/10 rounded"></div>
@@ -41,52 +41,59 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
     )
   }
 
-  if (selectedCrisis) {
-    return <CrisisDetail crisis={selectedCrisis} onClose={onCrisisDeselect} />
-  }
-
   return (
-    <div className="w-96 bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col">
-      <div className="p-6 border-b border-white/10">
-        <h2 className="text-xl font-bold text-white mb-4">Active Crises</h2>
-        <div className="flex gap-2">
-          <button
-            onClick={() => setSortBy('severity')}
-            className={`px-3 py-1 text-xs rounded ${
-              sortBy === 'severity'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white/10 text-gray-300 hover:bg-white/20'
-            }`}
-          >
-            Severity
-          </button>
-          <button
-            onClick={() => setSortBy('time')}
-            className={`px-3 py-1 text-xs rounded ${
-              sortBy === 'time'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white/10 text-gray-300 hover:bg-white/20'
-            }`}
-          >
-            Recent
-          </button>
+    <div className="w-96 bg-slate-900 border-l border-white/10 flex flex-col h-full">
+      {/* Selected Crisis Detail - Always visible if selected */}
+      {selectedCrisis && (
+        <div className="border-b border-white/10">
+          <CrisisDetail crisis={selectedCrisis} onClose={onCrisisDeselect} compact={true} />
         </div>
-      </div>
-      
-      <div className="flex-1 overflow-y-auto p-4 space-y-3">
-        {sortedCrises.map((crisis) => (
-          <CrisisCard
-            key={crisis.crisis_id}
-            crisis={crisis}
-            onClick={() => onCrisisSelect(crisis)}
-          />
-        ))}
+      )}
+
+      {/* Crises List */}
+      <div className="flex-1 flex flex-col min-h-0">
+        <div className="p-6 border-b border-white/10 flex-shrink-0">
+          <h2 className="text-xl font-bold text-white mb-4">Active Crises</h2>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setSortBy('severity')}
+              className={`px-3 py-1 text-xs rounded ${
+                sortBy === 'severity'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
+              }`}
+            >
+              Severity
+            </button>
+            <button
+              onClick={() => setSortBy('time')}
+              className={`px-3 py-1 text-xs rounded ${
+                sortBy === 'time'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'
+              }`}
+            >
+              Recent
+            </button>
+          </div>
+        </div>
+        
+        <div className="flex-1 overflow-y-auto p-4 space-y-3">
+          {sortedCrises.map((crisis) => (
+            <CrisisCard
+              key={crisis.crisis_id}
+              crisis={crisis}
+              onClick={() => onCrisisSelect(crisis)}
+              isSelected={selectedCrisis?.crisis_id === crisis.crisis_id}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
 }
 
-function CrisisCard({ crisis, onClick }) {
+function CrisisCard({ crisis, onClick, isSelected = false }) {
   const severityColor = getSeverityColor(crisis.severity_score)
   const severityLabel = getSeverityLabel(crisis.severity_score)
   const bgClass = severityColorClasses[severityColor] || 'bg-medium'
@@ -95,7 +102,9 @@ function CrisisCard({ crisis, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="bg-white/5 rounded-lg p-4 border border-white/10 cursor-pointer hover:bg-white/10 transition-all hover:scale-[1.02]"
+      className={`bg-white/5 rounded-lg p-4 border cursor-pointer hover:bg-white/10 transition-all hover:scale-[1.02] ${
+        isSelected ? 'border-blue-500 bg-blue-500/10' : 'border-white/10'
+      }`}
     >
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-2">
@@ -128,14 +137,76 @@ function CrisisCard({ crisis, onClick }) {
   )
 }
 
-function CrisisDetail({ crisis, onClose }) {
+function CrisisDetail({ crisis, onClose, compact = false }) {
   const severityColor = getSeverityColor(crisis.severity_score)
   const severityLabel = getSeverityLabel(crisis.severity_score)
   const bgClass = severityColorClasses[severityColor] || 'bg-medium'
   const textClass = severityTextClasses[severityColor] || 'text-medium'
 
+  if (compact) {
+    return (
+      <div className="p-4 bg-slate-800/50">
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex-1">
+            <h3 className="text-lg font-bold text-white mb-1 capitalize">
+              {crisis.type.replace('_', ' ')}
+            </h3>
+            <div className="flex items-center gap-2 text-gray-400 text-xs mb-2">
+              <MapPin className="w-3 h-3" />
+              <span>{crisis.location.city}, {crisis.location.country}</span>
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className={`px-2 py-1 rounded-full text-xs font-semibold ${bgClass}/20 ${textClass}`}>
+                {severityLabel} ({crisis.severity_score.toFixed(1)})
+              </span>
+              <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                crisis.status === 'ongoing' ? 'bg-orange-500/20 text-orange-400' : 'bg-green-500/20 text-green-400'
+              }`}>
+                {crisis.status}
+              </span>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-1 hover:bg-white/10 rounded-lg transition-colors ml-2"
+          >
+            <X className="w-4 h-4 text-gray-400" />
+          </button>
+        </div>
+        
+        <p className="text-xs text-gray-300 leading-relaxed mb-3 overflow-hidden" style={{ 
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+          maxHeight: '2.5rem'
+        }}>
+          {crisis.description}
+        </p>
+        
+        <div className="grid grid-cols-4 gap-2 text-xs">
+          <div>
+            <div className="text-gray-500">Deaths</div>
+            <div className="font-semibold text-red-400">{formatNumber(crisis.impact?.deaths || 0)}</div>
+          </div>
+          <div>
+            <div className="text-gray-500">Injured</div>
+            <div className="font-semibold text-orange-400">{formatNumber(crisis.impact?.injured || 0)}</div>
+          </div>
+          <div>
+            <div className="text-gray-500">Displaced</div>
+            <div className="font-semibold text-yellow-400">{formatNumber(crisis.impact?.displaced || 0)}</div>
+          </div>
+          <div>
+            <div className="text-gray-500">Affected</div>
+            <div className="font-semibold text-blue-400">{formatNumber(crisis.impact?.affected_total || 0)}</div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="w-96 bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col h-full">
+    <div className="w-96 bg-slate-900 border-l border-white/10 flex flex-col h-full">
       <div className="p-6 border-b border-white/10">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
@@ -242,7 +313,7 @@ function CrisisDetail({ crisis, onClose }) {
             {crisis.ngo_campaigns?.map((ngo, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-lg p-4 hover:from-blue-600/30 hover:to-purple-600/30 transition-all hover:scale-[1.02]"
+                className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4 hover:bg-blue-600/30 transition-all hover:scale-[1.02]"
               >
                 <div className="flex items-start justify-between mb-2">
                   <div>
@@ -262,7 +333,7 @@ function CrisisDetail({ crisis, onClose }) {
                   href={ngo.campaign_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full mt-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 transition-all"
+                  className="w-full mt-3 bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-blue-500 transition-all"
                 >
                   <Heart className="w-4 h-4" />
                   Donate Now

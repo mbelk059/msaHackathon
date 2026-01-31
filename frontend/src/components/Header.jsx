@@ -3,7 +3,7 @@ import { formatNumber } from '../services/crisisService'
 
 export default function Header({ stats }) {
   return (
-    <div className="h-20 bg-black/40 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-8">
+    <div className="h-20 bg-slate-900 border-b border-white/10 flex items-center justify-between px-8">
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
           <Globe className="w-8 h-8 text-blue-400" />
