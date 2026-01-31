@@ -1,6 +1,5 @@
 """
-CrisisAI Tools - Mock data tools for crisis detection, verification, NGO matching, and updates.
-For hackathon demo - simulates real-time crisis monitoring pipeline.
+CrisisAI Tools - data tools for crisis detection, verification, NGO matching, and updates.
 """
 import json
 import os
@@ -257,7 +256,7 @@ def get_actionable_crises(
     tool_config: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """
-    Get all actionable crises (for frontend consumption).
+    Get all actionable crises
     Returns full crisis data with NGO campaigns.
     """
     log_id = "[CrisisTools:get_actionable_crises]"

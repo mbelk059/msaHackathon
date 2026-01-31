@@ -9,8 +9,6 @@ log:
 # This agent subscribes to crisis/verified/* topics and matches each crisis
 # to active NGO donation campaigns, verifying campaign URLs are legitimate.
 #
-# For hackathon demo: Uses mock data from mock_actionable_crises.json
-# In production: Would scrape/API call NGO websites and verify campaigns
 # =============================================================================
 
 apps:

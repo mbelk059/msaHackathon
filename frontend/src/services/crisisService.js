@@ -1,12 +1,10 @@
 // Mock service to load crisis data
-// In production, this would connect to Solace topics or API endpoints
 
-// Try static file first (always works when serving from frontend); then API
 const STATIC_CRISES_PATH = '/data/crises/mock_actionable_crises.json'
 const API_CRISES_PATH = '/api/crises'
 
 export async function getActionableCrises() {
-  // 1) Static file (no backend needed)
+  // 1) Static file
   try {
     const r = await fetch(STATIC_CRISES_PATH)
     if (r.ok) {

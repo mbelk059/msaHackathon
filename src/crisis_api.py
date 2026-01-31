@@ -1,8 +1,3 @@
-"""
-Minimal API that serves actionable crises JSON for the CrisisAI frontend.
-Run from project root: uv run python -m src.crisis_api
-Serves GET /api/crises on port 8001. Frontend proxies /api to this when backend is running.
-"""
 from pathlib import Path
 import json
 
