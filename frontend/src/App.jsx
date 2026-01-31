@@ -76,13 +76,15 @@ function App() {
             loading={loading}
           />
         </div>
-        <Dashboard 
-          crises={crises}
-          selectedCrisis={selectedCrisis}
-          onCrisisSelect={handleCrisisSelect}
-          onCrisisDeselect={handleCrisisDeselect}
-          loading={loading}
-        />
+        <div className="flex-shrink-0">
+          <Dashboard 
+            crises={crises}
+            selectedCrisis={selectedCrisis}
+            onCrisisSelect={handleCrisisSelect}
+            onCrisisDeselect={handleCrisisDeselect}
+            loading={loading}
+          />
+        </div>
       </div>
     </div>
   )

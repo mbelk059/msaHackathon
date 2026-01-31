@@ -1,10 +1,10 @@
 # AGENTS.md - AI Assistant Instructions
 
-This file provides context for AI coding assistants working with this Solace Agent Mesh (SAM) hackathon quickstart project.
+This file provides context for AI coding assistants working with this **CrisisAI** project (Solace Agent Mesh / SAM).
 
 ## Project Overview
 
-This is a **hackathon quickstart template** for building SAM applications. The infrastructure is pre-configured—focus on creating agents and tools.
+This is the **CrisisAI** backend: orchestrator + 4 crisis agents (Detection, Verification, NGO Matching, Update Monitor). The infrastructure is pre-configured—focus on crisis agents and tools in `src/crisis_tools.py`.
 
 **Tech Stack:**
 

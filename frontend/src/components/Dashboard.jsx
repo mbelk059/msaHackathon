@@ -16,6 +16,18 @@ const severityTextClasses = {
   low: 'text-low'
 }
 
+const severityTrendColors = {
+  increasing: 'text-red-400',
+  stable: 'text-yellow-400',
+  decreasing: 'text-green-400',
+}
+
+const severityTrendLabels = {
+  increasing: 'Worsening',
+  stable: 'Stable',
+  decreasing: 'Improving',
+}
+
 export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCrisisDeselect, loading }) {
   const [sortBy, setSortBy] = useState('severity')
 
@@ -74,13 +86,19 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
       </div>
       
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
-        {sortedCrises.map((crisis) => (
-          <CrisisCard
-            key={crisis.crisis_id}
-            crisis={crisis}
-            onClick={() => onCrisisSelect(crisis)}
-          />
-        ))}
+        {sortedCrises.length === 0 ? (
+          <div className="text-gray-400 text-sm p-4 text-center">
+            No crises loaded. Check console. Ensure <code className="text-gray-300">public/data/crises/mock_actionable_crises.json</code> exists or run the crisis API on port 8001.
+          </div>
+        ) : (
+          sortedCrises.map((crisis) => (
+            <CrisisCard
+              key={crisis.crisis_id}
+              crisis={crisis}
+              onClick={() => onCrisisSelect(crisis)}
+            />
+          ))
+        )}
       </div>
     </div>
   )
@@ -165,9 +183,17 @@ function CrisisDetail({ crisis, onClose }) {
           </button>
         </div>
         
+        {crisis.headline && (
+          <p className="text-sm font-medium text-blue-200 mb-2">{crisis.headline}</p>
+        )}
         <p className="text-sm text-gray-300 leading-relaxed">
           {crisis.description}
         </p>
+        {crisis.severity_trend && (
+          <p className="text-xs text-gray-400 mt-2">
+            Severity trend: <span className={severityTrendColors[crisis.severity_trend] || 'text-gray-400'}>{severityTrendLabels[crisis.severity_trend] || crisis.severity_trend}</span>
+          </p>
+        )}
       </div>
       
       <div className="flex-1 overflow-y-auto p-6 space-y-6">

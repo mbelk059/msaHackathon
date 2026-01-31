@@ -2635,16 +2635,20 @@ name = "sam-hackathon-quickstart"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "fastapi" },
     { name = "pygithub" },
     { name = "sam-webhook-gateway" },
     { name = "solace-agent-mesh" },
+    { name = "uvicorn" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "fastapi", specifier = ">=0.100.0" },
     { name = "pygithub", specifier = "==2.8.1" },
     { name = "sam-webhook-gateway", git = "https://github.com/SolaceLabs/solace-agent-mesh-core-plugins?subdirectory=sam-webhook-gateway" },
     { name = "solace-agent-mesh", specifier = ">=1.13.3" },
+    { name = "uvicorn", specifier = ">=0.22.0" },
 ]
 
 [[package]]

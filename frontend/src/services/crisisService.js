@@ -1,27 +1,47 @@
 // Mock service to load crisis data
 // In production, this would connect to Solace topics or API endpoints
 
+// Try static file first (always works when serving from frontend); then API
+const STATIC_CRISES_PATH = '/data/crises/mock_actionable_crises.json'
+const API_CRISES_PATH = '/api/crises'
+
 export async function getActionableCrises() {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 500))
-  
+  // 1) Static file (no backend needed)
   try {
-    // In production, fetch from API or Solace
-    // For demo, we'll use the mock data file
-    const response = await fetch('/data/crises/mock_actionable_crises.json')
-    const data = await response.json()
-    return {
-      status: 'success',
-      crises: data.crises || []
+    const r = await fetch(STATIC_CRISES_PATH)
+    if (r.ok) {
+      const data = await r.json()
+      const crises = data.crises || []
+      if (crises.length > 0) return { status: 'success', crises }
     }
-  } catch (error) {
-    console.error('Error loading crises:', error)
-    return {
-      status: 'error',
-      message: error.message,
-      crises: []
+  } catch (_) {}
+  // 2) Backend API (port 8001)
+  try {
+    const r = await fetch(API_CRISES_PATH)
+    if (r.ok) {
+      const data = await r.json()
+      const crises = data.crises || []
+      if (crises.length > 0) return { status: 'success', crises }
     }
-  }
+  } catch (_) {}
+  // 3) Fallback so UI never shows empty
+  console.warn('CrisisAI: Using fallback data. Run crisis API (port 8001) or ensure public/data/crises exists.')
+  return { status: 'success', crises: getFallbackCrises() }
+}
+
+function getFallbackCrises() {
+  return [
+    {
+      crisis_id: 'fallback_1',
+      type: 'humanitarian_crisis',
+      location: { country: 'Palestine', city: 'Gaza', lat: 31.4, lng: 34.5 },
+      severity_score: 9.5,
+      impact: { deaths: 35000, injured: 78000, displaced: 1900000, affected_total: 2300000 },
+      status: 'ongoing',
+      description: 'Humanitarian crisis with critical needs. Load mock data from public/data/crises for full list.',
+      ngo_campaigns: [{ org_name: 'UNICEF', campaign_url: 'https://www.unicef.org', verified: true, focus_area: 'Emergency relief' }]
+    }
+  ]
 }
 
 export function getSeverityColor(score) {
