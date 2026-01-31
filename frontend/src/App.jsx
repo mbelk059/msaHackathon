@@ -10,7 +10,7 @@ function App() {
   const [globalStats, setGlobalStats] = useState({
     totalCrises: 0,
     totalAffected: 0,
-    totalDeaths: 0
+    aidWorkers: 0
   })
   const [loading, setLoading] = useState(true)
 
@@ -30,7 +30,10 @@ function App() {
     const stats = {
       totalCrises: crises.length,
       totalAffected: crises.reduce((sum, c) => sum + (c.impact?.affected_total || 0), 0),
-      totalDeaths: crises.reduce((sum, c) => sum + (c.impact?.deaths || 0), 0)
+      aidWorkers: crises.reduce((sum, c) => {
+        const affected = c.impact?.affected_total || 0
+        return sum + Math.round(affected * 0.01) 
+      }, 0)
     }
     setGlobalStats(stats)
 
