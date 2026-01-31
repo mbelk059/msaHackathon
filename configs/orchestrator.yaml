@@ -1,5 +1,5 @@
 # Solace Agent Mesh Orchestrator Agent Configuration
-# Based on preset/agents/basic/main_orchestrator.yaml
+# Based on preset/agents/basic/main_orchestrator.yaml - KEEP ALL SECTIONS
 
 log:
   stdout_log_level: INFO
