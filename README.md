@@ -140,7 +140,7 @@ The platform simulates the experience of a live system. During a demo or live se
 
 ### Prerequisites
 - Node.js (18+) and npm
-- Python 3.10+
+- Python 3.11.0
 - Access to Solace Cloud (free tier) or Docker for local broker
 
 ### 1. Run the Backend Agents
