@@ -32,6 +32,16 @@ The platform is built on **Solace Agent Mesh (SAM)**, an event-driven architectu
 
 ---
 
+## App Screenshots
+
+<p align="left-align">
+  <img src="https://github.com/user-attachments/assets/41cbdeca-cea8-43f7-a24d-24057618cbd5" width="800" />
+  <img src="https://github.com/user-attachments/assets/82bc5ce2-5cab-4d94-befd-3f5d3b737676" width="800" /> <br>
+  <img src="https://github.com/user-attachments/assets/95ff9ebd-f60c-4171-9b68-6a646e5575e4" width="150" />
+</p>
+
+---
+
 ## How AI Powers CrisisAI
 
 CrisisAI uses four specialized AI agents that run in parallel and communicate through the Solace event mesh. Each agent has a single, well-defined responsibility, and together they form a pipeline that takes raw, unstructured data from the world and turns it into verified, actionable crisis information.
