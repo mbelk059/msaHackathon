@@ -1,11 +1,11 @@
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useLoader } from '@react-three/fiber'
 import { OrbitControls, Stars, Sphere } from '@react-three/drei'
 import { useMemo, useEffect, useState } from 'react'
 import * as THREE from 'three'
 import CrisisMarker from './CrisisMarker'
 import SeverityLegend from './SeverityLegend'
 
-// Converts lat/lng (degrees) to a point on a unit sphere of given radius.
+// convert lat/lng (degrees) to a point on a unit sphere of given radius
 function latLngToVector3(lat, lng, radius = 1) {
   const phi   = (90 - lat)  * (Math.PI / 180)
   const theta = lng          * (Math.PI / 180)
@@ -17,7 +17,7 @@ function latLngToVector3(lat, lng, radius = 1) {
   return [x, y, z]
 }
 
-// Component to render country borders
+// render country borders
 function CountryBorders({ geoData }) {
   const linesGeometry = useMemo(() => {
     if (!geoData) return null
@@ -77,15 +77,42 @@ function CountryBorders({ geoData }) {
   )
 }
 
+// adding earth textures
+function TexturedEarth() {
+
+  const colorMap = useLoader(THREE.TextureLoader, 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_atmos_2048.jpg')
+  const bumpMap = useLoader(THREE.TextureLoader, 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/planets/earth_normal_2048.jpg')
+  
+  // align with countries
+  colorMap.wrapS = colorMap.wrapT = THREE.RepeatWrapping
+  bumpMap.wrapS = bumpMap.wrapT = THREE.RepeatWrapping
+  
+  // align textures
+  colorMap.offset.x = -0.0005 
+  bumpMap.offset.x = -0.0005
+  
+  return (
+    <Sphere args={[1, 64, 64]} rotation={[0, -Math.PI / 2, 0]}>
+      <meshStandardMaterial
+        map={colorMap}
+        bumpMap={bumpMap}
+        bumpScale={0.02}
+        roughness={0.9}
+        metalness={0.1}
+      />
+    </Sphere>
+  )
+}
+
 export default function Globe({ crises, selectedCrisis, onCrisisSelect, loading }) {
   const [geoData, setGeoData] = useState(null)
 
   useEffect(() => {
-    // Load simplified world countries GeoJSON
+    // world countries GeoJSON
     fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
       .then(res => res.json())
       .then(data => {
-        // Convert TopoJSON to GeoJSON
+        // convert TopoJSON to GeoJSON
         const countries = data.objects.countries
         const geoJson = {
           type: 'FeatureCollection',
@@ -96,7 +123,7 @@ export default function Globe({ crises, selectedCrisis, onCrisisSelect, loading 
           }))
         }
         
-        // Simple TopoJSON arc decoding
+        // TopoJSON arc decoding
         const arcs = data.arcs
         const transform = data.transform
         
@@ -136,7 +163,7 @@ export default function Globe({ crises, selectedCrisis, onCrisisSelect, loading 
       })
       .catch(err => {
         console.error('Failed to load country borders:', err)
-        // Fallback to simpler GeoJSON
+        // if fail go back to simpler GeoJSON
         fetch('https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson')
           .then(res => res.json())
           .then(data => setGeoData(data))
@@ -164,21 +191,13 @@ export default function Globe({ crises, selectedCrisis, onCrisisSelect, loading 
 
         <Stars radius={300} depth={50} count={5000} factor={4} fade speed={1} />
 
-        {/* Earth sphere with darker ocean color */}
-        <Sphere args={[1, 64, 64]}>
-          <meshStandardMaterial
-            color="#0f172a"
-            roughness={0.9}
-            metalness={0.1}
-            transparent
-            opacity={0.95}
-          />
-        </Sphere>
+        {/* use textured earth instead of plain Sphere */}
+        <TexturedEarth />
 
-        {/* Country borders */}
+        {/* country borders */}
         {geoData && <CountryBorders geoData={geoData} />}
 
-        {/* Crisis markers */}
+        {/* crisis markers */}
         {markers.map(({ crisis, position }) => (
           <CrisisMarker
             key={crisis.crisis_id}
