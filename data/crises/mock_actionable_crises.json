@@ -1,0 +1,604 @@
+{
+  "meta": {
+    "last_generated": "2026-01-31T00:00:00Z",
+    "total_crises": 10,
+    "data_schema": "v1",
+    "note": "Impact figures based on UN and NGO sources as of Jan 2025-2026. Numbers represent confirmed reports and may underestimate actual toll."
+  },
+  "crises": [
+    {
+      "crisis_id": "conflict_gaza_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "middle-east", "ongoing", "trending"],
+      "headline": "Gaza humanitarian crisis: mass displacement and critical shortages",
+      "severity_trend": "worsening",
+      "location": { 
+        "country": "Palestine", 
+        "city": "Gaza", 
+        "region": "Gaza Strip", 
+        "lat": 31.5, 
+        "lng": 34.5 
+      },
+      "severity_score": 9.5,
+      "confidence": 0.99,
+      "impact": { 
+        "deaths": 72000, 
+        "injured": 171000, 
+        "displaced": 1900000, 
+        "affected_total": 2200000, 
+        "children_affected": 1000000 
+      },
+      "status": "ongoing",
+      "description": "Ongoing conflict in Gaza has created a severe humanitarian crisis. Over 70,000 killed (mostly civilians), 171,000 injured, with 90% of population displaced. Widespread destruction, critical shortages of food, water, medical supplies. Health and education systems collapsed.",
+      "timestamp_verified": "2023-10-07T08:00:00Z",
+      "last_updated": "2025-12-31T16:00:00Z",
+      "verified_sources": ["UN OCHA", "WHO", "WFP", "UNRWA", "Palestinian Ministry of Health"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNRWA", 
+          "campaign_url": "https://donate.unrwa.org/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Emergency shelter, food, water, healthcare" 
+        },
+        { 
+          "org_name": "Palestine Children's Relief Fund", 
+          "campaign_url": "https://www.pcrf.net/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Medical care for children, trauma treatment" 
+        },
+        { 
+          "org_name": "Anera", 
+          "campaign_url": "https://www.anera.org/where-we-work/palestine/gaza/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Food, water, medical supplies, education" 
+        },
+        { 
+          "org_name": "World Food Programme", 
+          "campaign_url": "https://www.wfp.org/emergencies/palestine-emergency", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Food assistance, emergency meals" 
+        },
+        { 
+          "org_name": "Save the Children", 
+          "campaign_url": "https://www.savethechildren.org/us/where-we-work/west-bank-gaza", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Child protection, nutrition, mental health" 
+        },
+        { 
+          "org_name": "Medical Aid for Palestinians", 
+          "campaign_url": "https://www.map.org.uk/donate/donate-to-gaza", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Medical care, health supplies, hospitals" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "conflict_sudan_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "africa", "ongoing", "trending", "famine"],
+      "headline": "Sudan: world's largest displacement crisis with famine risk",
+      "severity_trend": "worsening",
+      "location": { 
+        "country": "Sudan", 
+        "city": "Khartoum", 
+        "region": "Khartoum State", 
+        "lat": 15.5, 
+        "lng": 32.5 
+      },
+      "severity_score": 9.3,
+      "confidence": 0.98,
+      "impact": { 
+        "deaths": 20000, 
+        "injured": 33000, 
+        "displaced": 14000000, 
+        "affected_total": 30000000, 
+        "children_affected": 14000000 
+      },
+      "status": "ongoing",
+      "description": "War between SAF and RSF has created world's largest displacement crisis - 14 million displaced (9.3M internally, 4.3M refugees). Over 30 million need aid. Severe hunger affects 21 million (45% of population), health system collapsed, ongoing atrocities.",
+      "timestamp_verified": "2023-04-15T10:00:00Z",
+      "last_updated": "2026-01-09T08:00:00Z",
+      "verified_sources": ["UN OCHA", "IOM", "UNHCR", "WFP", "Al Jazeera"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNHCR", 
+          "campaign_url": "https://donate.unhcr.org/int/en/sudan-emergency", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Emergency shelter, protection, cash assistance" 
+        },
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org.uk/donate/sudan-appeal/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Children, nutrition, water, health" 
+        },
+        { 
+          "org_name": "International Rescue Committee", 
+          "campaign_url": "https://help.rescue.org/donate/sudan", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Health, water, sanitation, women and children" 
+        },
+        { 
+          "org_name": "Islamic Relief", 
+          "campaign_url": "https://islamic-relief.org/appeals/sudan-emergency-appeal/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Food, water, medical supplies" 
+        },
+        { 
+          "org_name": "UN Crisis Relief", 
+          "campaign_url": "https://crisisrelief.un.org/sudan-crisis", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Multi-sector humanitarian response" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "conflict_ukraine_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "europe", "ongoing"],
+      "headline": "Ukraine: war enters fourth year; millions displaced",
+      "severity_trend": "stable",
+      "location": { 
+        "country": "Ukraine", 
+        "city": "Kyiv", 
+        "region": "Kyiv Oblast", 
+        "lat": 50.45, 
+        "lng": 30.52 
+      },
+      "severity_score": 8.7,
+      "confidence": 0.99,
+      "impact": { 
+        "deaths": 16000, 
+        "injured": 30000, 
+        "displaced": 10600000, 
+        "affected_total": 10800000, 
+        "children_affected": 3500000 
+      },
+      "status": "ongoing",
+      "description": "Nearly four years of war with Russia. Over 16,000 verified civilian deaths (likely higher), 10.6M displaced (6.9M internally, 3.7M refugees). Widespread attacks on civilian infrastructure, energy facilities. 62% of IDPs report homes destroyed. Humanitarian needs critical for winter.",
+      "timestamp_verified": "2022-02-24T06:00:00Z",
+      "last_updated": "2026-01-31T14:00:00Z",
+      "verified_sources": ["UN OCHA", "UNHCR", "OHCHR", "INTERSOS"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNHCR", 
+          "campaign_url": "https://www.unhcr.org/us/emergencies/ukraine-emergency", 
+          "verified": true, 
+          "verification_date": "2026-01-31T07:00:00Z", 
+          "focus_area": "Protection, shelter, cash assistance, winter support" 
+        },
+        { 
+          "org_name": "Save the Children", 
+          "campaign_url": "https://www.savethechildren.org/us/where-we-work/ukraine", 
+          "verified": true, 
+          "verification_date": "2026-01-31T07:00:00Z", 
+          "focus_area": "Child protection, education, mental health" 
+        },
+        { 
+          "org_name": "Nova Ukraine", 
+          "campaign_url": "https://novaukraine.org/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T07:00:00Z", 
+          "focus_area": "Medical supplies, energy infrastructure, humanitarian aid" 
+        },
+        { 
+          "org_name": "GlobalGiving", 
+          "campaign_url": "https://www.globalgiving.org/projects/ukraine-crisis-relief-fund/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T07:00:00Z", 
+          "focus_area": "Emergency relief to local organizations" 
+        },
+        { 
+          "org_name": "CARE", 
+          "campaign_url": "https://www.care.org/our-work/disaster-response/emergencies/ukraine-humanitarian-crisis/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T07:00:00Z", 
+          "focus_area": "Cash assistance, psychosocial support, women and elderly" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "humanitarian_yemen_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "middle-east", "famine", "ongoing"],
+      "headline": "Yemen: protracted humanitarian crisis; millions in need",
+      "severity_trend": "stable",
+      "location": { 
+        "country": "Yemen", 
+        "city": "Sana'a", 
+        "region": "Sana'a Governorate", 
+        "lat": 15.35, 
+        "lng": 44.21 
+      },
+      "severity_score": 8.6,
+      "confidence": 0.97,
+      "impact": { 
+        "deaths": 377000, 
+        "injured": 12000, 
+        "displaced": 4500000, 
+        "affected_total": 21600000, 
+        "children_affected": 11300000 
+      },
+      "status": "ongoing",
+      "description": "Years of conflict, economic collapse, and disease outbreaks have left most of Yemen's population in need of aid. Severely damaged health and water systems, widespread malnutrition, and cholera outbreaks continue.",
+      "timestamp_verified": "2015-03-01T08:00:00Z",
+      "last_updated": "2026-01-30T12:00:00Z",
+      "verified_sources": ["UN OCHA", "WHO", "WFP", "UNICEF"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org/emergencies/yemen-crisis", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Children, nutrition, health, water" 
+        },
+        { 
+          "org_name": "Save the Children", 
+          "campaign_url": "https://www.savethechildren.org/us/where-we-work/yemen", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Child protection, food security, health" 
+        },
+        { 
+          "org_name": "International Rescue Committee", 
+          "campaign_url": "https://www.rescue.org/country/yemen", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Health, nutrition, water, economic recovery" 
+        },
+        { 
+          "org_name": "Islamic Relief", 
+          "campaign_url": "https://islamic-relief.org/appeals/yemen/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Food, water, medical aid, shelter" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "displacement_drc_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "africa", "displacement", "ongoing"],
+      "headline": "DRC: escalating violence and displacement in eastern provinces",
+      "severity_trend": "worsening",
+      "location": { 
+        "country": "Democratic Republic of the Congo", 
+        "city": "Goma", 
+        "region": "North Kivu", 
+        "lat": -1.67, 
+        "lng": 29.23 
+      },
+      "severity_score": 8.3,
+      "confidence": 0.95,
+      "impact": { 
+        "deaths": 7000, 
+        "injured": 15000, 
+        "displaced": 7000000, 
+        "affected_total": 25000000, 
+        "children_affected": 6500000 
+      },
+      "status": "ongoing",
+      "description": "Armed conflict and violence in eastern DRC have displaced millions. Severe hunger, disease outbreaks including cholera and measles, and lack of access to health care are critical concerns.",
+      "timestamp_verified": "2022-01-01T10:00:00Z",
+      "last_updated": "2026-01-30T09:00:00Z",
+      "verified_sources": ["UN OCHA", "UNHCR", "WFP", "WHO"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org/emergencies/democratic-republic-congo", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Children, nutrition, health, protection" 
+        },
+        { 
+          "org_name": "International Rescue Committee", 
+          "campaign_url": "https://www.rescue.org/country/democratic-republic-congo", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Health, protection, women's empowerment" 
+        },
+        { 
+          "org_name": "Doctors Without Borders", 
+          "campaign_url": "https://www.doctorswithoutborders.org/what-we-do/countries/democratic-republic-congo", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Medical care, emergency surgery, epidemics" 
+        },
+        { 
+          "org_name": "World Food Programme", 
+          "campaign_url": "https://www.wfp.org/countries/democratic-republic-congo", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Food assistance, nutrition programs" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "humanitarian_haiti_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["violence", "americas", "gangs", "ongoing"],
+      "headline": "Haiti: gang violence and political crisis create emergency",
+      "severity_trend": "worsening",
+      "location": { 
+        "country": "Haiti", 
+        "city": "Port-au-Prince", 
+        "region": "Ouest", 
+        "lat": 18.54, 
+        "lng": -72.34 
+      },
+      "severity_score": 8.1,
+      "confidence": 0.96,
+      "impact": { 
+        "deaths": 5600, 
+        "injured": 9000, 
+        "displaced": 700000, 
+        "affected_total": 5500000, 
+        "children_affected": 3000000 
+      },
+      "status": "ongoing",
+      "description": "Gang control of Port-au-Prince, political instability, and cholera outbreaks have created severe crisis. Access to food, health care, clean water, and education severely limited.",
+      "timestamp_verified": "2021-07-01T08:00:00Z",
+      "last_updated": "2026-01-30T11:00:00Z",
+      "verified_sources": ["UN OCHA", "WFP", "UNICEF", "IOM"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org/haiti/en", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Children, health, nutrition, cholera response" 
+        },
+        { 
+          "org_name": "World Food Programme", 
+          "campaign_url": "https://www.wfp.org/countries/haiti", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Food assistance, school meals" 
+        },
+        { 
+          "org_name": "International Rescue Committee", 
+          "campaign_url": "https://www.rescue.org/country/haiti", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Health, protection, economic recovery" 
+        },
+        { 
+          "org_name": "Doctors Without Borders", 
+          "campaign_url": "https://www.doctorswithoutborders.org/what-we-do/countries/haiti", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Medical care, trauma treatment, cholera" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "humanitarian_myanmar_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "asia", "displacement", "ongoing"],
+      "headline": "Myanmar: conflict and displacement; humanitarian access limited",
+      "severity_trend": "worsening",
+      "location": { 
+        "country": "Myanmar", 
+        "city": "Yangon", 
+        "region": "Yangon Region", 
+        "lat": 16.87, 
+        "lng": 96.20 
+      },
+      "severity_score": 7.9,
+      "confidence": 0.92,
+      "impact": { 
+        "deaths": 5000, 
+        "injured": 12000, 
+        "displaced": 3000000, 
+        "affected_total": 18600000, 
+        "children_affected": 6200000 
+      },
+      "status": "ongoing",
+      "description": "Ongoing conflict since 2021 has displaced millions across Myanmar. Food insecurity, lack of health care, and severely restricted humanitarian access compound the crisis.",
+      "timestamp_verified": "2021-02-01T08:00:00Z",
+      "last_updated": "2026-01-28T09:00:00Z",
+      "verified_sources": ["UN OCHA", "UNHCR", "WFP"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org/emergencies/myanmar-crisis", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Children, health, nutrition, education" 
+        },
+        { 
+          "org_name": "Save the Children", 
+          "campaign_url": "https://www.savethechildren.org/us/where-we-work/myanmar", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Child protection, education, health" 
+        },
+        { 
+          "org_name": "International Rescue Committee", 
+          "campaign_url": "https://www.rescue.org/country/myanmar", 
+          "verified": true, 
+          "verification_date": "2026-01-31T09:00:00Z", 
+          "focus_area": "Health, protection, economic support" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "drought_somalia_2024_001",
+      "type": "drought",
+      "tags": ["drought", "africa", "famine", "ongoing"],
+      "headline": "Horn of Africa drought: severe food insecurity persists",
+      "severity_trend": "stable",
+      "location": { 
+        "country": "Somalia", 
+        "city": "Mogadishu", 
+        "region": "Horn of Africa", 
+        "lat": 2.04, 
+        "lng": 45.34 
+      },
+      "severity_score": 7.7,
+      "confidence": 0.93,
+      "impact": { 
+        "deaths": 43000, 
+        "injured": 0, 
+        "displaced": 1200000, 
+        "affected_total": 8100000, 
+        "children_affected": 1800000 
+      },
+      "status": "ongoing",
+      "description": "Multi-year drought across Horn of Africa has led to severe food insecurity and water shortages. Crop failures, livestock deaths, and mass displacement continue despite some rainfall improvements.",
+      "timestamp_verified": "2020-10-01T10:00:00Z",
+      "last_updated": "2026-01-29T14:00:00Z",
+      "verified_sources": ["UN OCHA", "FAO", "WFP", "FEWS NET"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org/somalia/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Nutrition, water, sanitation, child protection" 
+        },
+        { 
+          "org_name": "World Food Programme", 
+          "campaign_url": "https://www.wfp.org/countries/somalia", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Food assistance, nutrition programs" 
+        },
+        { 
+          "org_name": "Save the Children", 
+          "campaign_url": "https://www.savethechildren.org/us/where-we-work/somalia", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Child nutrition, health, education" 
+        },
+        { 
+          "org_name": "Islamic Relief", 
+          "campaign_url": "https://islamic-relief.org/appeals/somalia/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Food aid, water, livelihood support" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "humanitarian_ethiopia_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "drought", "africa", "ongoing"],
+      "headline": "Ethiopia: multiple crises strain humanitarian response",
+      "severity_trend": "stable",
+      "location": { 
+        "country": "Ethiopia", 
+        "city": "Addis Ababa", 
+        "region": "Multiple regions", 
+        "lat": 9.03, 
+        "lng": 38.74 
+      },
+      "severity_score": 7.5,
+      "confidence": 0.91,
+      "impact": { 
+        "deaths": 600000, 
+        "injured": 30000, 
+        "displaced": 4500000, 
+        "affected_total": 21000000, 
+        "children_affected": 8900000 
+      },
+      "status": "ongoing",
+      "description": "Ongoing conflicts in multiple regions, drought impacts, and economic pressures have created widespread humanitarian needs. Millions face food insecurity and require assistance.",
+      "timestamp_verified": "2020-11-01T08:00:00Z",
+      "last_updated": "2026-01-29T12:00:00Z",
+      "verified_sources": ["UN OCHA", "WFP", "UNHCR"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org/ethiopia/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Children, nutrition, health, water" 
+        },
+        { 
+          "org_name": "World Food Programme", 
+          "campaign_url": "https://www.wfp.org/countries/ethiopia", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Food assistance, nutrition support" 
+        },
+        { 
+          "org_name": "International Rescue Committee", 
+          "campaign_url": "https://www.rescue.org/country/ethiopia", 
+          "verified": true, 
+          "verification_date": "2026-01-31T11:00:00Z", 
+          "focus_area": "Health, protection, economic recovery" 
+        }
+      ]
+    },
+    {
+      "crisis_id": "humanitarian_syria_2024_001",
+      "type": "humanitarian_crisis",
+      "tags": ["conflict", "middle-east", "ongoing", "earthquake"],
+      "headline": "Syria: protracted crisis worsened by earthquakes and displacement",
+      "severity_trend": "stable",
+      "location": { 
+        "country": "Syria", 
+        "city": "Damascus", 
+        "region": "Multiple regions", 
+        "lat": 33.51, 
+        "lng": 36.28 
+      },
+      "severity_score": 8.4,
+      "confidence": 0.97,
+      "impact": { 
+        "deaths": 500000, 
+        "injured": 1200000, 
+        "displaced": 6900000, 
+        "affected_total": 16700000, 
+        "children_affected": 6500000 
+      },
+      "status": "ongoing",
+      "description": "Years of conflict combined with devastating 2023 earthquakes have left millions in need. Collapsed infrastructure, economic crisis, and mass displacement create ongoing humanitarian emergency.",
+      "timestamp_verified": "2011-03-01T08:00:00Z",
+      "last_updated": "2026-01-30T10:00:00Z",
+      "verified_sources": ["UN OCHA", "UNHCR", "WHO", "UNICEF"],
+      "ngo_campaigns": [
+        { 
+          "org_name": "UNICEF", 
+          "campaign_url": "https://www.unicef.org/emergencies/syria-crisis", 
+          "verified": true, 
+          "verification_date": "2026-01-31T10:00:00Z", 
+          "focus_area": "Children, health, education, water" 
+        },
+        { 
+          "org_name": "Save the Children", 
+          "campaign_url": "https://www.savethechildren.org/us/where-we-work/syria", 
+          "verified": true, 
+          "verification_date": "2026-01-31T10:00:00Z", 
+          "focus_area": "Child protection, education, health" 
+        },
+        { 
+          "org_name": "International Rescue Committee", 
+          "campaign_url": "https://www.rescue.org/country/syria", 
+          "verified": true, 
+          "verification_date": "2026-01-31T10:00:00Z", 
+          "focus_area": "Health, protection, economic support" 
+        },
+        { 
+          "org_name": "Islamic Relief", 
+          "campaign_url": "https://islamic-relief.org/appeals/syria-emergency/", 
+          "verified": true, 
+          "verification_date": "2026-01-31T10:00:00Z", 
+          "focus_area": "Food, medical aid, shelter, winterization" 
+        }
+      ]
+    }
+  ]
+}

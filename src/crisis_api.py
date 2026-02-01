@@ -38,7 +38,7 @@ def find_crises_file() -> Path | None:
         if path.exists():
             return path
 
-    # Nothing found — return the first candidate so the error message is useful
+    # Nothing found so return the first candidate so the error message is useful
     return candidates[0]
 
 
