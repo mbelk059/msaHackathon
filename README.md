@@ -26,9 +26,9 @@ The result? Good intentions stall. Aid is delayed. People who genuinely want to 
 
 CrisisAI is an AI-for-good platform that monitors the globe in real time, detects emerging emergencies, verifies them through multiple sources, scores their severity, and connects users directly to trusted humanitarian organizations where they can take action.
 
-It is not just a news aggregator. It is an intelligent system that filters noise, prioritizes what matters most, and makes it effortless for everyday people to contribute to relief efforts anywhere in the world — whether that's an earthquake in Turkey, flooding in Pakistan, or a humanitarian crisis in Gaza.
+It is not just a news aggregator. It is an intelligent system that filters noise, prioritizes what matters most, and makes it effortless for everyday people to contribute to relief efforts anywhere in the world, whether that's an earthquake in Turkey, flooding in Pakistan, or a humanitarian crisis in Gaza.
 
-The platform is built on **Solace Agent Mesh (SAM)**, an event-driven architecture that enables multiple AI agents to work in parallel, each with a focused role, communicating seamlessly through a real-time message broker. This architecture mirrors how modern emergency response systems operate — distributed, fast, and resilient.
+The platform is built on **Solace Agent Mesh (SAM)**, an event-driven architecture that enables multiple AI agents to work in parallel, each with a focused role, communicating seamlessly through a real-time message broker. This architecture mirrors how modern emergency response systems operate, distributed, fast, and resilient.
 
 ---
 
@@ -47,7 +47,7 @@ The platform is built on **Solace Agent Mesh (SAM)**, an event-driven architectu
 CrisisAI uses four specialized AI agents that run in parallel and communicate through the Solace event mesh. Each agent has a single, well-defined responsibility, and together they form a pipeline that takes raw, unstructured data from the world and turns it into verified, actionable crisis information.
 
 ### 1. Crisis Detection Agent
-The first line of awareness. This agent continuously monitors multiple data sources — global disaster databases, major news feeds, official government alerts, and social media — looking for signals that a crisis is emerging or escalating. It listens for patterns: a spike in earthquake-related posts, an official USGS alert, a breaking news report from Reuters. When it detects a potential crisis, it packages the raw information and publishes it to the Solace event mesh for the next stage of processing.
+The first line of awareness. This agent continuously monitors multiple data sources, global disaster databases, major news feeds, official government alerts, and social media, looking for signals that a crisis is emerging or escalating. It listens for patterns: a spike in earthquake-related posts, an official USGS alert, a breaking news report from Reuters. When it detects a potential crisis, it packages the raw information and publishes it to the Solace event mesh for the next stage of processing.
 
 **Sources it monitors:** GDACS, USGS, NOAA, BBC, Reuters, Al Jazeera, Twitter/X trending topics.
 
@@ -60,10 +60,10 @@ Once verified, it calculates a **severity score from 1 to 10** based on a weight
 - Infrastructure and economic damage indicators (15%)
 - Ongoing vs. resolved status (15%)
 
-This scoring is what powers the prioritization on the platform. A severity 9 crisis in Gaza sits above a severity 5 storm in a region with minimal casualties — not arbitrarily, but because the data says so.
+This scoring is what powers the prioritization on the platform. A severity 9 crisis in Gaza sits above a severity 5 storm in a region with minimal casualties, not arbitrarily, but because the data says so.
 
 ### 3. NGO Matching Agent
-This is where awareness becomes action. Once a crisis is verified and scored, this agent analyzes the type and location of the emergency and matches it to humanitarian organizations that are actively responding on the ground. It identifies verified NGO campaigns — from Islamic Relief and the Red Cross/Red Crescent to UNICEF, Doctors Without Borders, and Save the Children — and surfaces their direct donation links.
+This is where awareness becomes action. Once a crisis is verified and scored, this agent analyzes the type and location of the emergency and matches it to humanitarian organizations that are actively responding on the ground. It identifies verified NGO campaigns, from Islamic Relief and the Red Cross/Red Crescent to UNICEF, Doctors Without Borders, and Save the Children, and surfaces their direct donation links.
 
 Every NGO and campaign link shown on the platform is verified. Users don't have to search, compare, or wonder. They see exactly which organizations are responding to which crisis, what they're doing (emergency shelter, medical aid, child support), and a single button to donate.
 
@@ -85,7 +85,7 @@ Crises are not static. A death toll rises. A new region is affected. Relief effo
         ↑  subscribes to → crisis/actionable/* + crisis/updates/*
 ```
 
-Each arrow is a real-time message flowing through the Solace event mesh. When a new earthquake is detected, the entire pipeline — from raw signal to verified, scored, and actionable crisis with donation links — completes in seconds.
+Each arrow is a real-time message flowing through the Solace event mesh. When a new earthquake is detected, the entire pipeline, from raw signal to verified, scored, and actionable crisis with donation links, completes in seconds.
 
 ---
 
@@ -122,7 +122,7 @@ The "How You Can Help" section is where CrisisAI delivers its real value. For ev
 - A direct link to that organization's specific campaign page for this crisis
 
 ### 📡 Simulated Real-Time Updates
-The platform simulates the experience of a live system. During a demo or live session, new crises can appear on the globe, and existing crises receive updates — casualty counts change, severity scores shift, new developments are reported. This demonstrates the power of the event-driven architecture underneath.
+The platform simulates the experience of a live system. During a demo or live session, new crises can appear on the globe, and existing crises receive updates, casualty counts change, severity scores shift, new developments are reported. This demonstrates the power of the event-driven architecture underneath.
 
 ---
 
@@ -174,27 +174,11 @@ The platform is available at **http://localhost:3000**.
 
 Solace Agent Mesh is the backbone of CrisisAI's architecture for several reasons:
 
-- **Parallel processing.** All four agents run simultaneously and independently. A new crisis detected by the Detection Agent is immediately available to the Verification Agent — no waiting, no bottlenecks.
+- **Parallel processing.** All four agents run simultaneously and independently. A new crisis detected by the Detection Agent is immediately available to the Verification Agent.
 - **Decoupled design.** Each agent only knows about its own job. If one agent needs to be updated or replaced, the others keep running. This is how real emergency systems are built.
 - **Event-driven scalability.** When a major disaster hits and dozens of sources report simultaneously, the event mesh handles the surge without dropping messages. Guaranteed delivery ensures no critical alert is lost.
-- **Topic-based routing.** The `crisis/raw/*`, `crisis/verified/*`, `crisis/actionable/*` topic hierarchy gives the system a natural, readable structure. The frontend only subscribes to actionable, verified crises — it never sees raw, unverified noise.
+- **Topic-based routing.** The `crisis/raw/*`, `crisis/verified/*`, `crisis/actionable/*` topic hierarchy gives the system a natural, readable structure. 
 - **Real-time updates.** The Update Monitor Agent can push changes to an existing crisis instantly, and the frontend receives them without polling. The platform stays current as situations evolve.
-
----
-
-## Impact & Vision
-
-CrisisAI is a proof of concept for how AI and event-driven architecture can be applied to one of humanity's most persistent challenges: getting help to people who need it, as fast as possible.
-
-In its current hackathon form, it demonstrates the full pipeline — from detection to verified, actionable crisis information with trusted donation links — using simulated data. In a production environment, this same architecture could:
-
-- Monitor thousands of data sources in real time across every continent
-- Detect emerging crises minutes or hours before they make mainstream news
-- Automatically route donations to the organizations best positioned to respond
-- Provide multilingual crisis information to a global audience
-- Scale instantly during large-scale disasters without infrastructure changes
-
-The goal is simple: **make it easier for anyone, anywhere, to understand what is happening in the world and to do something about it.**
 
 ---
 
