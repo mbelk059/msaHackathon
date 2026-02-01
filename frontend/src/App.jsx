@@ -70,8 +70,12 @@ function App() {
   return (
     <div className="w-screen h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
       <Header stats={globalStats} />
-      <div className="flex h-[calc(100vh-80px)]">
-        <div className="flex-1 relative">
+  
+      {/* Main content */}
+      <div className="flex flex-col lg:flex-row h-[calc(100vh-80px)]">
+        
+        {/* Globe */}
+        <div className="flex-1 relative min-h-[300px]">
           <Globe 
             crises={crises} 
             selectedCrisis={selectedCrisis}
@@ -79,7 +83,17 @@ function App() {
             loading={loading}
           />
         </div>
-        <div className="flex-shrink-0">
+  
+        {/* Dashboard */}
+        <div className="
+          w-full 
+          lg:w-[420px] 
+          xl:w-[480px]
+          flex-shrink-0
+          border-t lg:border-t-0 lg:border-l
+          border-slate-800
+          overflow-y-auto
+        ">
           <Dashboard 
             crises={crises}
             selectedCrisis={selectedCrisis}
@@ -88,9 +102,11 @@ function App() {
             loading={loading}
           />
         </div>
+  
       </div>
     </div>
   )
+  
 }
 
 export default App

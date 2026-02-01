@@ -43,7 +43,7 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
 
   if (loading) {
     return (
-      <div className="w-96 bg-black/40 backdrop-blur-md border-l border-white/10 p-6">
+      <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/40 backdrop-blur-md border-l border-white/10 p-6">
         <div className="animate-pulse space-y-4">
           <div className="h-8 bg-white/10 rounded"></div>
           <div className="h-32 bg-white/10 rounded"></div>
@@ -58,7 +58,7 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
   }
 
   return (
-    <div className="w-96 bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col">
+    <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col">
       <div className="p-6 border-b border-white/10">
         <h2 className="text-xl font-bold text-white mb-4">Active Crises</h2>
         <div className="flex gap-2">
@@ -113,7 +113,7 @@ function CrisisCard({ crisis, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="bg-white/5 rounded-lg p-4 border border-white/10 cursor-pointer hover:bg-white/10 transition-all hover:scale-[1.02]"
+      className="bg-white/5 rounded-lg p-4 border border-white/10 cursor-pointer hover:bg-white/10 transition-all hover:border-slate-500/50"
     >
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-2">
@@ -153,7 +153,7 @@ function CrisisDetail({ crisis, onClose }) {
   const textClass = severityTextClasses[severityColor] || 'text-medium'
 
   return (
-    <div className="w-96 bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col h-full">
+    <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col h-full">
       <div className="p-6 border-b border-white/10">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
@@ -268,7 +268,7 @@ function CrisisDetail({ crisis, onClose }) {
             {crisis.ngo_campaigns?.map((ngo, idx) => (
               <div
                 key={idx}
-                className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 rounded-lg p-4 hover:from-blue-600/30 hover:to-purple-600/30 transition-all hover:scale-[1.02]"
+                className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-4 hover:from-blue-600/30 hover:to-purple-600/30 transition-all hover:border-slate-500/50"
               >
                 <div className="flex items-start justify-between mb-2">
                   <div>
@@ -288,7 +288,7 @@ function CrisisDetail({ crisis, onClose }) {
                   href={ngo.campaign_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full mt-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 transition-all"
+                  className="w-full mt-3 bg-blue-600/90 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 transition-all"
                 >
                   <Heart className="w-4 h-4" />
                   Donate Now
