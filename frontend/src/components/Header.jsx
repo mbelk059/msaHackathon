@@ -1,4 +1,4 @@
-import { Globe, AlertCircle, Users, Shield } from 'lucide-react'
+import { AlertCircle, Users, Shield } from 'lucide-react'
 import { formatNumber } from '../services/crisisService'
 
 export default function Header({ stats }) {
@@ -6,7 +6,7 @@ export default function Header({ stats }) {
     <div className="bg-black/90 backdrop-blur-md border-b border-white/10 flex flex-col lg:flex-row justify-center lg:justify-between px-4 lg:px-8 py-3 lg:py-4 gap-3">
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-3">
-          <Globe className="w-8 h-8 text-emerald-400" />
+          <img src="/logo.png" alt="CrisisAI Logo" className="w-12 h-12 object-contain" />
           <div>
             <h1 className="text-xl lg:text-2xl font-bold text-white">CrisisAI</h1>
             <p className="text-xs lg:text-sm text-gray-400">Real-time Global Emergency Monitoring</p>
