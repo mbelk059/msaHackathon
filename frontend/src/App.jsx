@@ -68,7 +68,7 @@ function App() {
   }
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <div className="w-screen h-screen bg-gray-950 overflow-hidden">
       <Header stats={globalStats} />
   
       {/* Main content */}

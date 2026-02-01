@@ -29,7 +29,7 @@ body {
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #475569 transparent;
+  scrollbar-color: #27272a transparent;
 }
 
 /* Chrome / Edge */
@@ -42,12 +42,12 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #475569;
+  background-color: #27272a;
   border-radius: 9999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #64748b;
+  background-color: #3f3f46;
 }

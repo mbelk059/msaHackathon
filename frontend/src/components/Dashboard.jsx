@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { X, MapPin, AlertCircle, Clock, CheckCircle2, ExternalLink, Heart } from 'lucide-react'
+import { X, MapPin, AlertCircle, Clock, CheckCircle2, ExternalLink, Heart, TrendingUp } from 'lucide-react'
 import { getSeverityColor, getSeverityLabel, formatNumber, formatTimeAgo } from '../services/crisisService'
 
 const severityColorClasses = {
@@ -43,7 +43,7 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
 
   if (loading) {
     return (
-      <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/40 backdrop-blur-md border-l border-white/10 p-6">
+      <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/80 backdrop-blur-md border-l border-white/10 p-6">
         <div className="animate-pulse space-y-4">
           <div className="h-8 bg-white/10 rounded"></div>
           <div className="h-32 bg-white/10 rounded"></div>
@@ -58,7 +58,7 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
   }
 
   return (
-    <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col">
+    <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/80 backdrop-blur-md border-l border-white/10 flex flex-col">
       <div className="p-6 border-b border-white/10">
         <h2 className="text-xl font-bold text-white mb-4">Active Crises</h2>
         <div className="flex gap-2">
@@ -66,7 +66,7 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
             onClick={() => setSortBy('severity')}
             className={`px-3 py-1 text-xs rounded ${
               sortBy === 'severity'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-emerald-600 text-white'
                 : 'bg-white/10 text-gray-300 hover:bg-white/20'
             }`}
           >
@@ -76,7 +76,7 @@ export default function Dashboard({ crises, selectedCrisis, onCrisisSelect, onCr
             onClick={() => setSortBy('time')}
             className={`px-3 py-1 text-xs rounded ${
               sortBy === 'time'
-                ? 'bg-blue-600 text-white'
+                ? 'bg-emerald-600 text-white'
                 : 'bg-white/10 text-gray-300 hover:bg-white/20'
             }`}
           >
@@ -113,7 +113,7 @@ function CrisisCard({ crisis, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="bg-white/5 rounded-lg p-4 border border-white/10 cursor-pointer hover:bg-white/10 transition-all hover:border-slate-500/50"
+      className="bg-white/5 rounded-lg p-4 border border-white/10 cursor-pointer hover:bg-white/10 transition-all hover:border-gray-500/50"
     >
       <div className="flex items-start justify-between mb-2">
         <div className="flex items-center gap-2">
@@ -152,8 +152,23 @@ function CrisisDetail({ crisis, onClose }) {
   const bgClass = severityColorClasses[severityColor] || 'bg-medium'
   const textClass = severityTextClasses[severityColor] || 'text-medium'
 
+  // Helper function to format currency
+  const formatCurrency = (amount) => {
+    if (!amount) return '$0'
+    if (amount >= 1000000000) return `$${(amount / 1000000000).toFixed(1)}B`
+    if (amount >= 1000000) return `$${(amount / 1000000).toFixed(1)}M`
+    if (amount >= 1000) return `$${(amount / 1000).toFixed(1)}K`
+    return `$${amount}`
+  }
+
+  // Helper function to calculate funding percentage
+  const getFundingPercentage = (raised, goal) => {
+    if (!goal || !raised) return 0
+    return Math.min((raised / goal) * 100, 100)
+  }
+
   return (
-    <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/40 backdrop-blur-md border-l border-white/10 flex flex-col h-full">
+    <div className="w-full lg:w-[420px] xl:w-[480px] bg-black/80 backdrop-blur-md border-l border-white/10 flex flex-col h-full">
       <div className="p-6 border-b border-white/10">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
@@ -184,7 +199,7 @@ function CrisisDetail({ crisis, onClose }) {
         </div>
         
         {crisis.headline && (
-          <p className="text-sm font-medium text-blue-200 mb-2">{crisis.headline}</p>
+          <p className="text-sm font-medium text-emerald-200 mb-2">{crisis.headline}</p>
         )}
         <p className="text-sm text-gray-300 leading-relaxed">
           {crisis.description}
@@ -201,27 +216,27 @@ function CrisisDetail({ crisis, onClose }) {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Impact Statistics</h3>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-4">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-4">
               <div className="text-xs text-gray-400 mb-1">Deaths</div>
-              <div className="text-2xl font-bold text-red-400">
+              <div className="text-2xl font-bold text-emerald-400">
                 {formatNumber(crisis.impact?.deaths || 0)}
               </div>
             </div>
-            <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-4">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-4">
               <div className="text-xs text-gray-400 mb-1">Injured</div>
-              <div className="text-2xl font-bold text-orange-400">
+              <div className="text-2xl font-bold text-emerald-400">
                 {formatNumber(crisis.impact?.injured || 0)}
               </div>
             </div>
-            <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-4">
               <div className="text-xs text-gray-400 mb-1">Displaced</div>
-              <div className="text-2xl font-bold text-yellow-400">
+              <div className="text-2xl font-bold text-emerald-400">
                 {formatNumber(crisis.impact?.displaced || 0)}
               </div>
             </div>
-            <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4">
+            <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-lg p-4">
               <div className="text-xs text-gray-400 mb-1">Total Affected</div>
-              <div className="text-2xl font-bold text-blue-400">
+              <div className="text-2xl font-bold text-emerald-400">
                 {formatNumber(crisis.impact?.affected_total || 0)}
               </div>
             </div>
@@ -257,7 +272,7 @@ function CrisisDetail({ crisis, onClose }) {
         {/* How You Can Help */}
         <div>
           <div className="flex items-center gap-2 text-white mb-4">
-            <AlertCircle className="w-5 h-5 text-blue-400" />
+            <AlertCircle className="w-5 h-5 text-emerald-400" />
             <h3 className="text-lg font-semibold">How You Can Help</h3>
           </div>
           <p className="text-sm text-gray-400 mb-4">
@@ -265,37 +280,66 @@ function CrisisDetail({ crisis, onClose }) {
           </p>
           
           <div className="space-y-3">
-            {crisis.ngo_campaigns?.map((ngo, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-4 hover:from-blue-600/30 hover:to-purple-600/30 transition-all hover:border-slate-500/50"
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-semibold text-white">{ngo.org_name}</h4>
-                      {ngo.verified && (
-                        <span className="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs flex items-center gap-1">
-                          <CheckCircle2 className="w-3 h-3" />
-                          Verified
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-xs text-gray-400">{ngo.focus_area}</p>
-                  </div>
-                </div>
-                <a
-                  href={ngo.campaign_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full mt-3 bg-blue-600/90 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 transition-all"
+            {crisis.ngo_campaigns?.map((ngo, idx) => {
+              const fundingPercentage = getFundingPercentage(ngo.money_raised, ngo.funding_goal)
+              
+              return (
+                <div
+                  key={idx}
+                  className="bg-zinc-900/60 border border-zinc-800/50 rounded-lg p-4 hover:bg-zinc-900/80 transition-all hover:border-zinc-700/50"
                 >
-                  <Heart className="w-4 h-4" />
-                  Donate Now
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-            ))}
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-semibold text-white">{ngo.org_name}</h4>
+                        {ngo.verified && (
+                          <span className="px-2 py-0.5 bg-green-500/20 text-green-400 rounded text-xs flex items-center gap-1">
+                            <CheckCircle2 className="w-3 h-3" />
+                            Verified
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-400">{ngo.focus_area}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Funding Progress */}
+                  {ngo.money_raised !== undefined && ngo.funding_goal && (
+                    <div className="mt-3 mb-3">
+                      <div className="flex items-center justify-between text-xs mb-1">
+                        <span className="text-gray-400 flex items-center gap-1">
+                          <TrendingUp className="w-3 h-3" />
+                          Raised so far
+                        </span>
+                        <span className="text-white font-semibold">
+                          {formatCurrency(ngo.money_raised)} of {formatCurrency(ngo.funding_goal)}
+                        </span>
+                      </div>
+                      <div className="w-full bg-zinc-800/50 rounded-full h-2">
+                        <div 
+                          className="bg-gradient-to-r from-emerald-500 to-green-500 h-2 rounded-full transition-all duration-500"
+                          style={{ width: `${fundingPercentage}%` }}
+                        ></div>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1 text-right">
+                        {fundingPercentage.toFixed(1)}% funded
+                      </div>
+                    </div>
+                  )}
+                  
+                  <a
+                    href={ngo.campaign_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full mt-3 bg-emerald-600/90 hover:bg-emerald-500 text-white font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-all"
+                  >
+                    <Heart className="w-4 h-4" />
+                    Donate Now
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              )
+            })}
           </div>
         </div>
       </div>
