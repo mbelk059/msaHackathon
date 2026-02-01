@@ -9,8 +9,6 @@ log:
 # This agent subscribes to crisis/raw/*/* topics, cross-references multiple
 # sources for verification, filters false alarms, and calculates severity scores.
 #
-# For hackathon demo: Uses mock data from mock_verified_crises.json
-# In production: Would subscribe to Solace topics and verify in real-time
 # =============================================================================
 
 apps:

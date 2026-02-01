@@ -316,7 +316,7 @@
       "location": { "country": "Brazil", "city": "Porto Alegre", "region": "Rio Grande do Sul", "lat": -30.0, "lng": -51.2 },
       "severity_score": 7.0,
       "confidence": 0.96,
-      "impact": { "deaths": 170, "injured": 800, "displaced": 600000, "affected_total": 2300000 },
+      "impact": { "deaths": 170, "injured": 800, "displaced": 600000, "affected_total": 2300 },
       "status": "ongoing",
       "description": "Unprecedented rainfall caused massive flooding; entire cities submerged. Recovery and rebuilding continue.",
       "timestamp_verified": "2024-05-05T10:00:00Z",

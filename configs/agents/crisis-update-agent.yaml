@@ -10,8 +10,6 @@ log:
 # every 30-60 minutes to detect casualty count changes, status updates,
 # and new affected areas.
 #
-# For hackathon demo: Uses mock data from mock_crisis_updates.json
-# In production: Would continuously monitor and publish updates
 # =============================================================================
 
 apps:

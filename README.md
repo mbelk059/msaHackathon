@@ -1,8 +1,8 @@
-# CrisisAI — Real-Time Global Emergency Monitoring Platform
+# CrisisAI: Real-Time Global Emergency Monitoring Platform
 
 <div align="center">
 
-🌍 **Turning awareness into action** — AI-powered crisis detection, verification, and humanitarian response routing built on [Solace Agent Mesh](https://github.com/SolaceLabs/solace-agent-mesh).
+🌍 **Turning awareness into action**: AI-powered crisis detection, verification, and humanitarian response routing built on [Solace Agent Mesh](https://github.com/SolaceLabs/solace-agent-mesh).
 
 </div>
 

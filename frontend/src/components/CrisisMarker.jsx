@@ -63,7 +63,6 @@ export default function CrisisMarker({ position, crisis, isSelected, onClick }) 
         </mesh>
       )}
       
-      {/* Hover tooltip would go here in a more advanced implementation */}
     </group>
   )
 }

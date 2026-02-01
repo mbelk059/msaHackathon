@@ -1,31 +1,45 @@
 // Mock service to load crisis data
-// In production, this would connect to Solace topics or API endpoints
-
-// Try static file first (always works when serving from frontend); then API
 const STATIC_CRISES_PATH = '/data/crises/mock_actionable_crises.json'
 const API_CRISES_PATH = '/api/crises'
 
 export async function getActionableCrises() {
-  // 1) Static file (no backend needed)
+  // 1) Backend API first (port 8001)
   try {
-    const r = await fetch(STATIC_CRISES_PATH)
-    if (r.ok) {
-      const data = await r.json()
-      const crises = data.crises || []
-      if (crises.length > 0) return { status: 'success', crises }
-    }
-  } catch (_) {}
-  // 2) Backend API (port 8001)
-  try {
+    console.log('[CrisisAI] Trying backend API:', API_CRISES_PATH)
     const r = await fetch(API_CRISES_PATH)
+    console.log('[CrisisAI] Backend response:', r.status, r.statusText)
     if (r.ok) {
       const data = await r.json()
       const crises = data.crises || []
-      if (crises.length > 0) return { status: 'success', crises }
+      if (crises.length > 0) {
+        console.log(`[CrisisAI] ✓ Using BACKEND — got ${crises.length} crises`)
+        return { status: 'success', crises }
+      }
+      console.log('[CrisisAI] Backend returned 0 crises, falling through...')
     }
-  } catch (_) {}
-  // 3) Fallback so UI never shows empty
-  console.warn('CrisisAI: Using fallback data. Run crisis API (port 8001) or ensure public/data/crises exists.')
+  } catch (e) {
+    console.log('[CrisisAI] Backend fetch failed:', e.message)
+  }
+
+  // 2) backup data
+  try {
+    console.log('[CrisisAI] Trying static file:', STATIC_CRISES_PATH)
+    const r = await fetch(STATIC_CRISES_PATH)
+    console.log('[CrisisAI] Static response:', r.status, r.statusText)
+    if (r.ok) {
+      const data = await r.json()
+      const crises = data.crises || []
+      if (crises.length > 0) {
+        console.log(`[CrisisAI] ✓ Using STATIC FILE — got ${crises.length} crises`)
+        return { status: 'success', crises }
+      }
+    }
+  } catch (e) {
+    console.log('[CrisisAI] Static fetch failed:', e.message)
+  }
+
+  // 3) Hardcoded fallback
+  console.log('[CrisisAI] ✓ Using HARDCODED FALLBACK')
   return { status: 'success', crises: getFallbackCrises() }
 }
 

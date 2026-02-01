@@ -9,8 +9,6 @@ log:
 # This agent simulates monitoring GDACS API, news RSS feeds, Twitter/X API,
 # USGS earthquake feed, and NOAA weather alerts to detect global emergencies.
 #
-# For hackathon demo: Uses mock data from mock_raw_crises.json
-# In production: Would connect to real APIs and publish to Solace topics
 # =============================================================================
 
 apps:
