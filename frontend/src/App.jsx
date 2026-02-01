@@ -68,7 +68,7 @@ function App() {
   }
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-black overflow-hidden">
+    <div className="w-screen h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
       <Header stats={globalStats} />
       <div className="flex h-[calc(100vh-80px)]">
         <div className="flex-1 relative">
